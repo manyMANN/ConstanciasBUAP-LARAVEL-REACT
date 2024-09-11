@@ -10,6 +10,27 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    /**
+     * La columna primaria para la tabla.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
+    /**
+     * Indica si la clave primaria es autoincrementable.
+     *
+     * @var bool
+     */
+    public $incrementing = false; // Porque 'user_id' no es autoincrementable
+
+    /**
+     * El tipo de la clave primaria.
+     *
+     * @var string
+     */
+    protected $keyType = 'int'; // O el tipo de dato que uses para 'user_id'
+
 
     /**
      * The attributes that are mass assignable.
@@ -17,8 +38,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'name',
         'email',
+        'role',
         'password',
     ];
 
