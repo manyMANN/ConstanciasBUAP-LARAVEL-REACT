@@ -14,9 +14,9 @@ export default function Homesuperadmin({ user }) {
             <div className='h-1/2 content-center'>
                 <div className='botonessa'>
                     <Link className="botone-link" href="">Registrar Constancias</Link>
-                    <Link className="botone-link" href="/register">Registrar Usuario</Link>
-                    <Link className="botone-link" href="">Registrar Administrador</Link>
-                    <Link className="botone-link" href="">Registrar Super-Administrador</Link>
+                    <Link className="botone-link" href="/registeruser">Registrar Usuario</Link>
+                    <Link className="botone-link" href="/registeradmin">Registrar Administrador</Link>
+                    <Link className="botone-link" href="/registersuperadmin">Registrar Super-Administrador</Link>
                 </div>
             </div>
         </Layout>

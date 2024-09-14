@@ -103,7 +103,7 @@
     }
 
     .bienvenida {
-        @apply grid grid-cols-2 p-12;
+        @apply grid grid-cols-2 px-12 pt-12;
     }
 
     .bienvenidaname {
@@ -124,6 +124,10 @@
 
     .botone-link {
         @apply my-4 w-1/2 text-center rounded-md bg-blue-500 py-2 text-sm font-semibold leading-6 text-white hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
+
+    .formconstancias {
+        @apply block bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100;
     }
 
 }
