@@ -5,33 +5,34 @@ export default function Layout({ children, auth }) {
     console.log('Layout props:', { auth }); // Verifica los props
     return (
         <>
-            <header>
-                <nav>
-
-                    <Link className="flex justify-center gap-0 items-center link" >
-                        <img className="w-20" src="img/Logo-Buap-Blanco.png" alt="" />
-                        <h2 className="text-white">BUAP <br />Constancias</h2>
-                    </Link>
-                    <Link className="nav-link link" href="/home">Home</Link>
-                    <Link className="nav-link link" href="/About">About us</Link>
-                    {auth && auth.name ? (
-                        <>
-                            <Link className="nav-link link" href="/logout">Logout</Link>
-                        </>
-                    ) : (
-                        <>
-                            <Link className="nav-link link" href="/">Login</Link>
-                            <Link className="nav-link link" href="/register">Register</Link>
-                        </>
-                    )}
-                </nav>
-            </header>
-            <main className="block justify-center h-screen ">
-                {children}
-            </main>
-            <footer>
-                <Link className="nav-link" href="">Lalo Barriguett</Link>
-            </footer>
+            <div className="flex flex-col min-h-screen">
+                <header>
+                    <nav>
+                        <Link className="flex justify-center gap-0 items-center link" >
+                            <img className="w-20" src="img/Logo-Buap-Blanco.png" alt="" />
+                            <h2 className="text-white">BUAP <br />Constancias</h2>
+                        </Link>
+                        <Link className="nav-link link" href="/home">Home</Link>
+                        <Link className="nav-link link" href="/About">About us</Link>
+                        {auth && auth.name ? (
+                            <>
+                                <Link className="nav-link link" href="/logout">Logout</Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link className="nav-link link" href="/">Login</Link>
+                                <Link className="nav-link link" href="/register">Register</Link>
+                            </>
+                        )}
+                    </nav>
+                </header>
+                <main className='flex-grow p-4 min-h-screen'>
+                    {children}
+                </main>
+                <footer>
+                    <Link className="nav-link" href="">Lalo Barriguett</Link>
+                </footer>
+            </div>
         </>
     )
 }

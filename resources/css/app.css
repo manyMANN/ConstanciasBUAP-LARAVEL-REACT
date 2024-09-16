@@ -48,8 +48,6 @@
         @apply flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
     }
 
-
-
     .text-link {
         @apply font-semibold text-blue-500 hover:text-blue-600;
     }
@@ -91,7 +89,7 @@
     }
 
     footer {
-        @apply block bg-slate-800 shadow-md p-4 max-w-screen-lg mx-auto flex items-center justify-between;
+        @apply bg-slate-800 p-10 items-center justify-between;
     }
 
     .link {
@@ -128,6 +126,34 @@
 
     .formconstancias {
         @apply block bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100;
+    }
+
+    .cajaform {
+        @apply w-full grid grid-cols-5 gap-10 justify-items-center;
+    }
+
+    .labelform {
+        @apply block text-gray-700 text-sm font-bold mb-2;
+    }
+
+    .inputform {
+        @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
+    }
+
+    .buap {
+        @apply text-center text-gray-500 text-xs;
+    }
+
+    .caja-btn-excel {
+        @apply mt-10;
+    }
+
+    .btn-excel {
+        @apply p-3 w-1/2 text-center rounded-md bg-blue-500 text-sm font-semibold leading-6 text-white hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
+
+    .cargararchivo {
+        @apply p-5 m-5 grid grid-cols-2 gap-5 justify-items-center;
     }
 
 }

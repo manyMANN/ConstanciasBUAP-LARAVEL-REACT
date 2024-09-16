@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('constancia_id')->unique()->primary();
             $table->integer('user_id');
             $table->integer('numero_descargas')->default(0);
-            $table->string('id_dems')->unique(); //ID DEMS
+            $table->string('dems_id')->unique(); //ID DEMS
             $table->string('f_direccion')->unique(); //FOLIO DIRECCION
             $table->string('f_coordinacion')->unique(); //FOLIO COORDINACION
             $table->string('f_4ano')->unique(); //FOLIO 4 AÑO
@@ -26,14 +26,13 @@ return new class extends Migration
             $table->string('contenido_1')->unique(); //Contenido 2 "encadena"
             $table->string('unidad_academica')->unique(); //Unidad Academica
             $table->string('correo_electronico')->unique(); //Correo electronico
-            //$table->string('id_trabajador')->unique();
             $table->string('nombre_docente')->unique(); //Nombre del Docente
             $table->string('contenido_constancia')->unique(); //Contenido de la constancia
             $table->string('periodo')->unique(); //Periodo
             $table->string('fecha_elaboracion')->unique(); //Fecha de Documento
             $table->string('observaciones')->unique(); //Observaciones
             $table->string('academia')->unique(); //Academia
-            $table->string('fecha_envio')->unique(); //Fecha de envio y/o solicitud
+            $table->date('fecha_envio')->unique(); //Fecha de envio y/o solicitud
             $table->string('validacion')->unique(); //Validacion
             $table->string('factor_esdeped')->unique(); //Factor ESDEPED
             $table->string('concepto_esdeped')->unique(); //Concepto ESDEPED
