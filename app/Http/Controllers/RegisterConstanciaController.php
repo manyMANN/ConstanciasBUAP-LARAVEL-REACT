@@ -11,7 +11,9 @@ class RegisterConstanciaController extends Controller
 {
     public function index()
     {
-        return inertia::render('RegisterConstancias');
+        return inertia::render('RegisterConstancias', [
+            'user' => Auth::user()
+        ]);
     }
 
     public function store(Request $request)

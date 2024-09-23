@@ -12,16 +12,15 @@ export default function Layout({ children, auth }) {
                             <img className="w-20" src="img/Logo-Buap-Blanco.png" alt="" />
                             <h2 className="text-white">BUAP <br />Constancias</h2>
                         </Link>
-                        <Link className="nav-link link" href="/home">Home</Link>
-                        <Link className="nav-link link" href="/About">About us</Link>
+
                         {auth && auth.name ? (
                             <>
-                                <Link className="nav-link link" href="/logout">Logout</Link>
+                                <p className='text-white'>User: {auth.name}</p>
+                                <Link className="nav-link link" href="/logout">Log-out</Link>
                             </>
                         ) : (
                             <>
                                 <Link className="nav-link link" href="/">Login</Link>
-                                <Link className="nav-link link" href="/register">Register</Link>
                             </>
                         )}
                     </nav>
@@ -29,8 +28,16 @@ export default function Layout({ children, auth }) {
                 <main className='flex-grow p-4 min-h-screen'>
                     {children}
                 </main>
-                <footer>
-                    <Link className="nav-link" href="">Lalo Barriguett</Link>
+                <footer className=''>
+                    <div className='flex w-full p-0 m-0 items-center justify-center'>
+                        <img className="w-1/6 p-0 m-0" src="img/Logo-Buap-Blue2.png" alt="" />
+                        <img className="w-1/4 p-0 m-0" src="img/Logo-Buap-Blue.png" alt="" />
+                    </div>
+
+                    <p>Torre de Gestión Académica y Servicios Administrativos Blvd. Valsequillo, Cd Universitaria, 72570 Puebla, Pue.
+                        Correo: buzondeusuarios.dems@correo.buap.mx Teléfono: 01 (222) 229 55 00 Ext. 5940.
+                    </p>
+                    <Link className="nav-link" href="">Development = Lalo Barriguett</Link>
                 </footer>
             </div>
         </>

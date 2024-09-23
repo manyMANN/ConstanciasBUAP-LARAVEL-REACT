@@ -1,10 +1,9 @@
-import { Link } from "@inertiajs/react";
 import { useForm } from '@inertiajs/react';
 import React from 'react';
 import Layout from "../Layouts/Layout";
 
 
-export default function Register() {
+export default function RegisterConstancias({ user }) {
     const { data, setData, post, errors, processing } = useForm({
         constancia_id: "",
         user_id: "",
@@ -36,7 +35,7 @@ export default function Register() {
     }
     console.log(errors);
     return (
-        <Layout>
+        <Layout auth={user}>
             <div className="w-full my-20 justify-items-center p-0">
                 <h1 className="title">Register Constancias</h1>
                 <form onSubmit={submit} method="POST" className="formconstancias">
@@ -217,9 +216,7 @@ export default function Register() {
                 <p className="buap">
                     &copy;2024 Benemérita Universidad Autónoma de Puebla.
                 </p>
-                <div className="caja-btn-excel">
-                    <Link className="btn-excel" href="/registerconstanciasexcel">Cargar Constancias (Excel)</Link>
-                </div>
+
             </div>
         </Layout>
     )

@@ -16,9 +16,14 @@ class Constancia extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'constancia_id',
+        //'constancia_id',
         'user_id',
         'numero_descargas',
+        'name',
+        'email',
+        'unidad_academica',
+        'academia',
+        'periodo',
         'dems_id',
         'f_direccion',
         'f_coordinacion',
@@ -28,14 +33,9 @@ class Constancia extends Model
         'libroMA',
         'f_3partida',
         'contenido_1',
-        'unidad_academica',
-        'correo_electronico',
-        'nombre_docente',
         'contenido_constancia',
-        'periodo',
         'fecha_elaboracion',
         'observaciones',
-        'academia',
         'fecha_envio',
         'validacion',
         'factor_esdeped',
@@ -54,8 +54,5 @@ class Constancia extends Model
     public $timestamps = true;
 
     // Definir la relación con el modelo User
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
-    }
+
 }

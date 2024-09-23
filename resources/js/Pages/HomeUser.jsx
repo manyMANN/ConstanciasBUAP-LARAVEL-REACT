@@ -1,19 +1,17 @@
-import React from 'react';
-import Layout from '../Layouts/Layout';
-import TableConstancias from './TableConstancias';
+import React from "react";
+import Layout from "../Layouts/Layout";
+import TableConstanciasDownload from "./TableConstanciasDownload";
 
-export default function Homeuser({ user }) {
+export default function HomeUser({ user, constancias }) {
     return (
         <Layout auth={user}>
             <div className='bienvenida'>
                 <p className='bienvenidaname'>Welcome User: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
-            <div className='h-screen p-0 m-0'>
-                <TableConstancias>
+            <TableConstanciasDownload constancias={constancias}>
 
-                </TableConstancias>
-            </div>
+            </TableConstanciasDownload>
         </Layout>
     );
 }

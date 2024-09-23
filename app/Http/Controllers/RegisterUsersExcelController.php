@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Imports\ConstanciasImport;
-use App\Models\Constancia;
+use App\Imports\UsersImport;
+use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
-
-class RegisterConstanciasExcelController extends Controller
+class RegisterUsersExcelController extends Controller
 {
     public function index()
     {
-        $constacias = Constancia::all();
-        return inertia::render('RegisterConstanciasExcel', [
-            'constancias' => $constacias,
+        $user = User::where('role', 1)->get();
+        return inertia::render('RegisterUsersExcel', [
+            'users' => $user,
             'user' => Auth::user(),
         ]);
     }
@@ -38,7 +37,7 @@ class RegisterConstanciasExcelController extends Controller
         try {
             $file = $request->file('file');
             // Importar el archivo
-            Excel::import(new ConstanciasImport, $file);
+            Excel::import(new UsersImport, $file);
 
             // Redirigir con un mensaje de éxito
             //return redirect('/registerconstanciasexcel')->with('success', 'Archivo importado exitosamente');

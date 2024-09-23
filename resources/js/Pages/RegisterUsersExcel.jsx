@@ -1,10 +1,11 @@
 import React from 'react';
 import Layout from "../Layouts/Layout";
-import TableConstancias from "./TableConstancias";
 //import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
+import TableUsers from "./TableUsers";
 
-export default function RegisterConstanciasExcel({ constancias, user }) {
+
+export default function RegisterUsersExcel({ users, user }) {
     /*
     const { data, setData, post, progress, errors } = useForm({
         file: null,
@@ -57,7 +58,7 @@ export default function RegisterConstanciasExcel({ constancias, user }) {
         setErrors(null);
 
         try {
-            const response = await fetch('/registerconstanciasexcelpost', {
+            const response = await fetch('/registerusersexcelpost', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -69,7 +70,6 @@ export default function RegisterConstanciasExcel({ constancias, user }) {
             if (response.ok) {
                 const data = await response.json();
                 setSuccessMessage(data.message || 'File uploaded successfully!');
-                setFile(null);
             } else {
                 const errorData = await response.json();
                 setErrors(errorData.error || 'There was an error uploading the file.');
@@ -84,10 +84,10 @@ export default function RegisterConstanciasExcel({ constancias, user }) {
 
     return (
         <Layout auth={user}>
-            <h2 className='title'>Registrar Constancias (Excel)</h2>
+            <h2 className='title'>Registrar Usuarios (Excel)</h2>
             <div className='instrucciones'>
                 <h2 className='instruccionesh1'>Instrucciones</h2>
-                <p>Por favor, decargue la plantilla (constancias_plantilla.xlsx) para tener exitó en la carga del archivo</p>
+                <p>Por favor, decargue la plantilla (users_plantilla.xlsx) para tener exitó en la carga del archivo</p>
             </div>
             <form className="cargararchivo" onSubmit={handleSubmit}>
                 <input className="inputform" type="file" accept=".xlsx,.xls,.csv" onChange={handleFileChange} />
@@ -99,7 +99,7 @@ export default function RegisterConstanciasExcel({ constancias, user }) {
                     {successMessage && <p className="success">{successMessage}</p>}
                 </div>
             </form>
-            <TableConstancias constancias={constancias} />
+            <TableUsers users={users}></TableUsers>
         </Layout>
     );
 }

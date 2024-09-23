@@ -11,10 +11,10 @@ export default function Homesuperadmin({ user }) {
                 <p className='bienvenidaname'>Welcome Super-Admin: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
-            <div className='h-1/2 content-center'>
+            <div className='h-full content-center pt-20'>
                 <div className='botonessa'>
-                    <Link className="botone-link" href="">Registrar Constancias</Link>
-                    <Link className="botone-link" href="/registeruser">Registrar Usuario</Link>
+                    <Link className="botone-link" href="/homeregisterconstancias">Registrar Constancias</Link>
+                    <Link className="botone-link" href="/homeregisterusers">Registrar Usuario</Link>
                     <Link className="botone-link" href="/registeradmin">Registrar Administrador</Link>
                     <Link className="botone-link" href="/registersuperadmin">Registrar Super-Administrador</Link>
                 </div>

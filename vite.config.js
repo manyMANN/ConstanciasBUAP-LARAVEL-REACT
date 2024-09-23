@@ -15,4 +15,7 @@ export default defineConfig({
             "@": "/resources/js",
         },
     },
+    server: {
+        port: 4000, // Cambia este número al puerto que desees
+    },
 });

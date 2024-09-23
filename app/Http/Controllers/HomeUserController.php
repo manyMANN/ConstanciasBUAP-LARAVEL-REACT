@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Constancia;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class HomeUserController extends Controller
 {
     public function index()
     {
-        return inertia::render('HomeUser');
-    }
-    public function homeuser()
-    {
+        $user = Auth::user();
+        //$userConstancias = DB::table('constancias')->where('user_id', $user['user_id'])->get();
+        $userConstancias = Constancia::where('user_id', $user['user_id'])->get();
         return Inertia::render('HomeUser', [
-            'user' => Auth::user(),
+            'user' => $user,
+            'constancias' => $userConstancias,
         ]);
     }
 }

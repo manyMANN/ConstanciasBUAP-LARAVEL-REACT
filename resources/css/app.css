@@ -41,7 +41,7 @@
     }
 
     main {
-        @apply max-w-screen-lg mx-auto;
+        @apply mx-auto;
     }
 
     .primary-btn {
@@ -69,7 +69,7 @@
     }
 
     thead {
-        @apply text-xs uppercase font-medium border-b border-slate-100 text-slate-600;
+        @apply text-xs uppercase font-medium border-b border-slate-100 text-slate-600 bg-gray-800;
     }
 
     tbody tr {
@@ -77,7 +77,7 @@
     }
 
     th {
-        @apply px-6 py-4;
+        @apply px-6 py-4 text-white;
     }
 
     td {
@@ -89,7 +89,7 @@
     }
 
     footer {
-        @apply bg-slate-800 p-10 items-center justify-between;
+        @apply grid grid-cols-3 font-sans text-xs text-white text-center bg-slate-800 p-10 items-center justify-between;
     }
 
     .link {
@@ -121,7 +121,7 @@
     }
 
     .botone-link {
-        @apply my-4 w-1/2 text-center rounded-md bg-blue-500 py-2 text-sm font-semibold leading-6 text-white hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+        @apply my-4 w-1/2 content-center text-center rounded-md bg-blue-500 py-2 text-sm font-semibold leading-6 text-white hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
     }
 
     .formconstancias {
@@ -156,4 +156,15 @@
         @apply p-5 m-5 grid grid-cols-2 gap-5 justify-items-center;
     }
 
+    .instrucciones {
+        @apply m-10;
+    }
+
+    .instruccionesh1 {
+        @apply text-2xl font-bold leading-9 text-slate-900;
+    }
+
+    .barrabusqueda {
+        @apply p-10 mx-auto hover:scale-105;
+    }
 }

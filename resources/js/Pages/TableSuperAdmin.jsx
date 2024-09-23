@@ -7,8 +7,10 @@ export default function TableSuperAdmin() {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre del Usuario</th>
+                        <th>ID SuperAdmin</th>
+                        <th>Nombre del SuperAdministrador</th>
+                        <th>Correo Electrónico</th>
+                        <th>Contraseña</th>
                         <th>Editar usuario</th>
                     </tr>
                 </thead>
