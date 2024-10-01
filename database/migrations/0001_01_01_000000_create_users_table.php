@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             //$table->id();
-            $table->string('user_id')->unique()->primary();
-            $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->integer('role');
-            $table->string('password');
+            $table->string('user_id')->unique()->primary(); //ID del Usuario
+            $table->string('name')->unique(); //Nombre del Usuario
+            $table->string('email')->unique(); //Correo Electronico del Usuario
+            $table->integer('role'); //Rol del Usuario 3:Super-Admin, 2:Admin, 1:Usuario
+            $table->string('password'); //Contraseña del Usuario
+            $table->string('admin_id'); //ID del Adminitrador que relizon el Registro del Usuario
             $table->rememberToken();
             $table->timestamps();
         });

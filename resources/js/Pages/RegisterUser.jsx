@@ -2,6 +2,7 @@ import { Link } from "@inertiajs/react";
 import { useForm } from '@inertiajs/react';
 import React from 'react';
 import Layout from "../Layouts/Layout";
+import { FaRegAddressCard } from "react-icons/fa";
 
 
 export default function RegisterUser({ user }) {
@@ -57,10 +58,10 @@ export default function RegisterUser({ user }) {
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="flex items-center content-center justify-center">
-                        <button disabled={processing} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Register
+                        <button disabled={processing} className="btn-login text-white" type="submit">
+                            <FaRegAddressCard className='login-icons mx-2' />
+                            Registrar
                         </button>
-
                     </div>
                 </form>
                 <p className="text-center text-gray-500 text-xs">

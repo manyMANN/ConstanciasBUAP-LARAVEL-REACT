@@ -40,14 +40,13 @@ class RegisterConstanciasExcelController extends Controller
             // Importar el archivo
             Excel::import(new ConstanciasImport, $file);
 
-            // Redirigir con un mensaje de éxito
-            //return redirect('/registerconstanciasexcel')->with('success', 'Archivo importado exitosamente');
             return response()->json(['message' => 'Archivo importado exitosamente'], 200);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             // Capturar cualquier error en la importación y redirigir con un mensaje de error
             //return redirect('/registerconstanciasexcel')->with('error', 'Hubo un problema al importar el archivo: ' . $e->getMessage());
             Log::error('Error al importar el archivo: ' . $e->getMessage());
             return response()->json(['error' => 'Hubo un problema al importar el archivo: ' . $e->getMessage()], 500);
+            //return response()->json(['error' => 'Hubo un problema al importar el archivo: ' . $e], 500);
         }
     }
 }

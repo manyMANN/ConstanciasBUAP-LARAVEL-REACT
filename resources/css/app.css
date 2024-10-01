@@ -101,7 +101,7 @@
     }
 
     .bienvenida {
-        @apply grid grid-cols-2 px-12 pt-12;
+        @apply grid grid-cols-2 px-12 pt-12 justify-items-center;
     }
 
     .bienvenidaname {
@@ -166,5 +166,25 @@
 
     .barrabusqueda {
         @apply p-10 mx-auto hover:scale-105;
+    }
+
+    .btn-download-constancia {
+        @apply w-full justify-center text-center rounded-md bg-blue-500 px-6 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    }
+
+    .logout-icons {
+        @apply text-white text-4xl;
+    }
+
+    .login-icons {
+        @apply text-white text-4xl;
+    }
+
+    .btn-login {
+        @apply bg-slate-800 rounded-md p-1 px-5 flex items-center content-center justify-center hover:bg-slate-600;
+    }
+
+    .td_constancia_contenido {
+        @apply font-bold max-w-3xl;
     }
 }

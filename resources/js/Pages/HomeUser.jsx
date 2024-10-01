@@ -6,7 +6,7 @@ export default function HomeUser({ user, constancias }) {
     return (
         <Layout auth={user}>
             <div className='bienvenida'>
-                <p className='bienvenidaname'>Welcome User: {user.name}</p>
+                <p className='bienvenidaname'>Bienvenido: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
             <TableConstanciasDownload constancias={constancias}>

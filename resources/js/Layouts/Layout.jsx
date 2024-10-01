@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "@inertiajs/react";
-
+import { IoLogIn } from "react-icons/io5";
 export default function Layout({ children, auth }) {
     console.log('Layout props:', { auth }); // Verifica los props
     return (
@@ -15,12 +15,17 @@ export default function Layout({ children, auth }) {
 
                         {auth && auth.name ? (
                             <>
-                                <p className='text-white'>User: {auth.name}</p>
-                                <Link className="nav-link link" href="/logout">Log-out</Link>
+                                <p className='text-white'>Usuario: {auth.name}</p>
+                                <div className='flex nav-link link' href="/logout">
+                                    <IoLogIn className='logout-icons' href='/logout' />
+                                    <Link className="content-center" href="/logout">Cerrar Sesión</Link>
+                                </div>
+
                             </>
                         ) : (
                             <>
-                                <Link className="nav-link link" href="/">Login</Link>
+
+                                <Link className="nav-link link" href="/">Inciar Sesión</Link>
                             </>
                         )}
                     </nav>

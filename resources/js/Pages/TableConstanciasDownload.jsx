@@ -1,5 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import ConstanciaPDF from './PDFConstancia'
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { BlobProvider } from '@react-pdf/renderer';
+import { FaDownload } from "react-icons/fa";
+
 
 export default function TableConstanciasDownload({ constancias }) {
     // Estado para la búsqueda
@@ -12,9 +17,8 @@ export default function TableConstanciasDownload({ constancias }) {
 
     // Filtrar constancias basado en el valor de búsqueda
     const filteredConstancias = constancias.filter((constancia) =>
-        constancia.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        constancia.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        constancia.unidad_academica.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        constancia.contenido_1.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        constancia.contenido_constancia.toLowerCase().includes(searchTerm.toLowerCase()) ||
         constancia.fecha_elaboracion.toLowerCase().includes(searchTerm.toLowerCase())
     );
     return (
@@ -32,26 +36,52 @@ export default function TableConstanciasDownload({ constancias }) {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>ID Docente</th>
-                        <th>Nombre del Docente</th>
-                        <th>Correo Electrónico</th>
-                        <th>Unidad Académica</th>
+                        <th>Constancia</th>
                         <th>Fecha de Elaboración</th>
-                        <th>Editar</th>
+                        <th>Vista Previa</th>
+                        <th>Descargar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {/* Mostrar constancias filtradas */}
                     {filteredConstancias.length > 0 ? (
-                        filteredConstancias.map((constancia) => (
+                        filteredConstancias.map((constancia, index) => (
                             <tr key={constancia.id}>
-                                <td>{constancia.constancia_id}</td>
-                                <td>{constancia.user_id}</td>
-                                <td>{constancia.name}</td>
-                                <td>{constancia.email}</td>
-                                <td>{constancia.unidad_academica}</td>
+                                <td>{index + 1}</td>
+                                <td className='td_constancia_contenido'>Por su valiosa participacón {constancia.contenido_1} {constancia.contenido_constancia}</td>
                                 <td>{constancia.fecha_elaboracion}</td>
-                                <td><a href="" className="btn-download" download>Editar</a></td>
+                                <td>
+                                    <BlobProvider document={<ConstanciaPDF constancia={constancia} />}>
+                                        {({ url, loading, error }) =>
+                                            loading ? (
+                                                'Generando vista previa...'
+                                            ) : (
+                                                <iframe
+                                                    src={url}
+                                                    width="200"
+                                                    height="142"
+                                                    title="Vista previa de la constancia"
+                                                />
+                                            )
+                                        }
+                                    </BlobProvider>
+                                </td>
+                                <td>
+                                    <div className='flex text-white justify-items-center content-center items-center btn-login '>
+                                        <FaDownload className='m-2' />
+                                        <PDFDownloadLink document={<ConstanciaPDF constancia={constancia} />} fileName='ConstanciaBUAP.pdf'>
+
+                                            {
+                                                ({ loading, url, error }) => loading ? (<button className="">
+                                                    Descargando...
+                                                </button>) : (<button className="">
+                                                    Descargar
+                                                </button>)
+                                            }
+                                        </PDFDownloadLink>
+                                    </div>
+
+                                </td>
                             </tr>
                         ))
                     ) : (
@@ -59,18 +89,6 @@ export default function TableConstanciasDownload({ constancias }) {
                             <td colSpan="7">No se encontraron constancias</td>
                         </tr>
                     )}
-                    {/*
-                    {constancias.map((constancia) => (
-                        <tr key={constancia.id}>
-                            <td>{constancia.constancia_id}</td>
-                            <td>{constancia.user_id}</td>
-                            <td>{constancia.name}</td>
-                            <td>{constancia.email}</td>
-                            <td>{constancia.unidad_academica}</td>
-                            <td>{constancia.fecha_elaboracion}</td>
-                            <td><a href="" class="btn-download" download>Download</a></td>
-                        </tr>
-                    ))}*/}
                 </tbody>
             </table>
         </div>

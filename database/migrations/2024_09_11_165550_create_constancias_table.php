@@ -36,8 +36,9 @@ return new class extends Migration
             $table->string('validacion'); //Validacion
             $table->string('factor_esdeped'); //Factor ESDEPED
             $table->string('concepto_esdeped'); //Concepto ESDEPED
-            $table->integer('numero_descargas')->default(0);
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->string('admin_id'); //ID del Adminitrador que relizon el Registro de la Constancia
+            $table->integer('numero_descargas')->default(0); //Numero de descargas
+            $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@ import Layout from "../Layouts/Layout";
 import TableConstancias from "./TableConstancias";
 //import { useForm } from '@inertiajs/react';
 import { useState } from 'react';
+import { FaUpload } from "react-icons/fa";
 
 export default function RegisterConstanciasExcel({ constancias, user }) {
     /*
@@ -87,13 +88,27 @@ export default function RegisterConstanciasExcel({ constancias, user }) {
             <h2 className='title'>Registrar Constancias (Excel)</h2>
             <div className='instrucciones'>
                 <h2 className='instruccionesh1'>Instrucciones</h2>
-                <p>Por favor, decargue la plantilla (constancias_plantilla.xlsx) para tener exitó en la carga del archivo</p>
+                <p>
+                    Por favor, descargue la plantilla
+                    <a
+                        className='text-red-800 hover:text-blue-800'
+                        href="/files/constancias_plantilla.xlsx"
+                        download
+                    >
+                        (constancias_plantilla.xlsx)
+                    </a>
+                    para tener éxito en la carga del archivo.
+                </p>
             </div>
             <form className="cargararchivo" onSubmit={handleSubmit}>
                 <input className="inputform" type="file" accept=".xlsx,.xls,.csv" onChange={handleFileChange} />
-                <button className="btn-download" type="submit" disabled={processing}>
-                    {processing ? 'Cargando...' : 'Cargar Archivo'}
-                </button>
+                <div className="flex items-center content-center justify-center" href='/'>
+                    <button className="btn-login text-white" type="submit" disabled={processing}>
+                        <FaUpload className='text-2xl m-2 mx-5' />
+
+                        {processing ? 'Cargando...' : 'Cargar Archivo'}
+                    </button>
+                </div>
                 <div className="h-10 p-0 m-0 ">
                     {errors && <p className="error">{errors}</p>}
                     {successMessage && <p className="success">{successMessage}</p>}

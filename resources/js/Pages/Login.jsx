@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../Layouts/Layout';
 import { Link } from "@inertiajs/react";
 import { useForm } from '@inertiajs/react';
-
+import { IoLogIn } from "react-icons/io5";
 
 export default function Login() {
     const { data, setData, post, errors, processing } = useForm({
@@ -16,7 +16,7 @@ export default function Login() {
     console.log(errors);
     return (
         <Layout>
-            <div className="w-full p-0">
+            <div className="w-full p-0 m-o">
                 <h1 className="block title">Login</h1>
                 <form onSubmit={submit} method="POST" className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100">
                     <div className="mb-4">
@@ -36,10 +36,10 @@ export default function Login() {
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="flex items-center content-center justify-center">
-                        <button disabled={processing} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Sign In
+                        <button disabled={processing} className="btn-login text-white" type="submit">
+                            <IoLogIn className='login-icons mx-2' />
+                            Iniciar Sesión
                         </button>
-
                     </div>
                 </form>
                 <p className="text-center text-gray-500 text-xs">

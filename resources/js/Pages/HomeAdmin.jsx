@@ -9,7 +9,7 @@ export default function Homeadmin({ user }) {
     return (
         <Layout auth={user}>
             <div className='bienvenida'>
-                <p className='bienvenidaname'>Welcome Admin: {user.name}</p>
+                <p className='bienvenidaname'>Bienvenido Admin: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
             <div className='h-1/2 content-center'>

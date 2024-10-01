@@ -3,42 +3,42 @@ import React from 'react';
 import Layout from "../Layouts/Layout";
 import { FaRegAddressCard } from "react-icons/fa";
 
-export default function RegisterConstancias({ user }) {
+export default function EditConstancia({ constancia }) {
     const { data, setData, post, errors, processing } = useForm({
-        constancia_id: "",
-        user_id: "",
-        dems_id: "",
-        f_direccion: "",
-        f_coordinacion: "",
-        f_4ano: "",
-        f_extra: "",
-        foja: "",
-        libroMA: "",
-        f_3partida: "",
-        contenido_1: "",
-        unidad_academica: "",
-        correo_electronico: "",
-        nombre_docente: "",
-        contenido_constancia: "",
-        periodo: "",
-        fecha_elaboracion: "",
-        observaciones: "",
-        academia: "",
-        fecha_envio: "",
-        validacion: "",
-        factor_esdeped: "",
-        concepto_esdeped: "",
+        constancia_id: constancia.constancia_id,
+        user_id: constancia.user_id,
+        name: constancia.name,
+        email: constancia.email,
+        unidad_academica: constancia.unidad_academica,
+        academia: constancia.academia,
+        periodo: constancia.periodo,
+        dems_id: constancia.dems_id,
+        f_direccion: constancia.f_direccion,
+        f_coordinacion: constancia.f_coordinacion,
+        f_4ano: constancia.f_4ano,
+        f_extra: constancia.f_extra,
+        foja: constancia.foja,
+        libroMA: constancia.libroMA,
+        f_3partida: constancia.f_3partida,
+        contenido_1: constancia.contenido_1,
+        contenido_constancia: constancia.contenido_constancia,
+        fecha_elaboracion: constancia.fecha_elaboracion,
+        observaciones: constancia.observaciones,
+        fecha_envio: constancia.fecha_envio,
+        validacion: constancia.validacion,
+        factor_esdeped: constancia.factor_esdeped,
+        concepto_esdeped: constancia.concepto_esdeped,
     })
-    function submit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        post('/registerconstancias');
+        post(`/update-constancia/${constancia.constancia_id}`);
     }
     console.log(errors);
     return (
-        <Layout auth={user}>
+        <Layout>
             <div className="w-full my-20 justify-items-center p-0">
-                <h1 className="title">Register Constancias</h1>
-                <form onSubmit={submit} method="POST" className="formconstancias">
+                <h1 className="title">Modificar Constancias</h1>
+                <form onSubmit={handleSubmit} method="POST" className="formconstancias">
                     <div className="cajaform">
                         <div className="mb-4">
                             <label className="labelform">
@@ -110,7 +110,7 @@ export default function RegisterConstancias({ user }) {
                             <label className="labelform">
                                 Fecha (Elaboración)
                             </label>
-                            <input className="inputform" name="fecha_elaboracion" id="fecha_elaboracion" type="date" placeholder="Fecha de Elaboración" value={data.fecha_elaboracion} onChange={(e) => setData('fecha_elaboracion', e.target.value)}></input>
+                            <input className="inputform" name="fecha_elaboracion" id="fecha_elaboracion" type="text" placeholder="Fecha de Elaboración" value={data.fecha_elaboracion} onChange={(e) => setData('fecha_elaboracion', e.target.value)}></input>
                         </div>
                         <div className="mb-4">
                             <label className="labelform">
@@ -128,7 +128,7 @@ export default function RegisterConstancias({ user }) {
                             <label className="labelform">
                                 Fecha de Envio
                             </label>
-                            <input className="inputform" name="fecha_envio" id="fecha_envio" type="date" placeholder="Fecha de Envio" value={data.fecha_envio} onChange={(e) => setData('fecha_envio', e.target.value)}></input>
+                            <input className="inputform" name="fecha_envio" id="fecha_envio" type="text" placeholder="Fecha de Envio" value={data.fecha_envio} onChange={(e) => setData('fecha_envio', e.target.value)}></input>
                         </div>
                         <div className="mb-4">
                             <label className="labelform">
@@ -159,15 +159,15 @@ export default function RegisterConstancias({ user }) {
                     </div>
                     <div className="mb-4">
                         <label className="labelform">
-                            Correo Electrónico
+                            E-mail
                         </label>
-                        <input className="inputform" name="correo_electronico" id="correo_electronico" type="text" placeholder="Correo Electrónico" value={data.correo_electronico} onChange={(e) => setData('correo_electronico', e.target.value)}></input>
+                        <input className="inputform" name="email" id="email" type="text" placeholder="E-mail" value={data.email} onChange={(e) => setData('email', e.target.value)}></input>
                     </div>
                     <div className="mb-4">
                         <label className="labelform">
-                            Nombre del Docente
+                            Nombre
                         </label>
-                        <input className="inputform" name="nombre_docente" id="nombre_docente" type="text" placeholder="Nombre del Docente" value={data.nombre_docente} onChange={(e) => setData('nombre_docente', e.target.value)}></input>
+                        <input className="inputform" name="name" id="name" type="text" placeholder="Nombre" value={data.name} onChange={(e) => setData('name', e.target.value)}></input>
                     </div>
                     <div className="mb-4">
                         <label className="labelform">
@@ -184,6 +184,11 @@ export default function RegisterConstancias({ user }) {
                     <div className="h-10 p-0 m-0 ">
                         {errors.constancia_id && <p className="error">{errors.constancia_id}</p>}
                         {errors.user_id && <p className="error">{errors.user_id}</p>}
+                        {errors.name && <p className="error">{errors.name}</p>}
+                        {errors.email && <p className="error">{errors.email}</p>}
+                        {errors.unidad_academica && <p className="error">{errors.unidad_academica}</p>}
+                        {errors.academia && <p className="error">{errors.academia}</p>}
+                        {errors.periodo && <p className="error">{errors.periodo}</p>}
                         {errors.dems_id && <p className="error">{errors.dems_id}</p>}
                         {errors.f_direccion && <p className="error">{errors.f_direccion}</p>}
                         {errors.f_coordinacion && <p className="error">{errors.f_coordinacion}</p>}
@@ -193,14 +198,9 @@ export default function RegisterConstancias({ user }) {
                         {errors.libroMA && <p className="error">{errors.libroMA}</p>}
                         {errors.f_3partida && <p className="error">{errors.f_3partida}</p>}
                         {errors.contenido_1 && <p className="error">{errors.contenido_1}</p>}
-                        {errors.unidad_academica && <p className="error">{errors.unidad_academica}</p>}
-                        {errors.correo_electronico && <p className="error">{errors.correo_electronico}</p>}
-                        {errors.nombre_docente && <p className="error">{errors.nombre_docente}</p>}
                         {errors.contenido_constancia && <p className="error">{errors.contenido_constancia}</p>}
-                        {errors.periodo && <p className="error">{errors.periodo}</p>}
                         {errors.fecha_elaboracion && <p className="error">{errors.fecha_elaboracion}</p>}
                         {errors.observaciones && <p className="error">{errors.observaciones}</p>}
-                        {errors.academia && <p className="error">{errors.academia}</p>}
                         {errors.fecha_envio && <p className="error">{errors.fecha_envio}</p>}
                         {errors.validacion && <p className="error">{errors.validacion}</p>}
                         {errors.factor_esdeped && <p className="error">{errors.factor_esdeped}</p>}
@@ -209,7 +209,7 @@ export default function RegisterConstancias({ user }) {
                     <div className="flex items-center content-center justify-center">
                         <button disabled={processing} className="btn-login text-white" type="submit">
                             <FaRegAddressCard className='login-icons mx-2' />
-                            Registrar
+                            Actualizar
                         </button>
                     </div>
                 </form>
@@ -221,5 +221,3 @@ export default function RegisterConstancias({ user }) {
         </Layout>
     )
 }
-//id contraseña
-//correo username

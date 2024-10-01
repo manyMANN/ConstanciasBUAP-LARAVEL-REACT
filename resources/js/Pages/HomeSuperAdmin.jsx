@@ -8,10 +8,10 @@ export default function Homesuperadmin({ user }) {
     return (
         <Layout auth={user} >
             <div className='bienvenida'>
-                <p className='bienvenidaname'>Welcome Super-Admin: {user.name}</p>
+                <p className='bienvenidaname'>Bienvenido Super-Admin: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
-            <div className='h-full content-center pt-20'>
+            <div className='h-full w-screen content-center pt-20'>
                 <div className='botonessa'>
                     <Link className="botone-link" href="/homeregisterconstancias">Registrar Constancias</Link>
                     <Link className="botone-link" href="/homeregisterusers">Registrar Usuario</Link>

@@ -2,8 +2,7 @@ import { Link } from "@inertiajs/react";
 import { useForm } from '@inertiajs/react';
 import React from 'react';
 import Layout from "../Layouts/Layout";
-
-
+import { FaRegAddressCard } from "react-icons/fa";
 export default function RegisterAdmin({ user }) {
     const { data, setData, post, errors, processing } = useForm({
         name: "",
@@ -19,11 +18,11 @@ export default function RegisterAdmin({ user }) {
     return (
         <Layout auth={user}>
             <div className='bienvenida'>
-                <p className='bienvenidaname'>Welcome Super-Admin: {user.name}</p>
+                <p className='bienvenidaname'>  Bienvenido Super-Admin: {user.name}</p>
                 <p className='bienvenidaemail'>{user.email}</p>
             </div>
             <div className="w-1/2 mx-auto m-0 p-0">
-                <h1 className="block title">Register Admin</h1>
+                <h1 className="block title">Registrar Administrador</h1>
                 <form onSubmit={submit} method="POST" className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -57,10 +56,10 @@ export default function RegisterAdmin({ user }) {
                         {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="flex items-center content-center justify-center">
-                        <button disabled={processing} className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Register
+                        <button disabled={processing} className="btn-login text-white" type="submit">
+                            <FaRegAddressCard className='login-icons mx-2' />
+                            Registrar
                         </button>
-
                     </div>
                 </form>
                 <p className="text-center text-gray-500 text-xs">

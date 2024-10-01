@@ -4,28 +4,26 @@ import React from 'react';
 import Layout from "../Layouts/Layout";
 import { FaRegAddressCard } from "react-icons/fa";
 
-
-export default function RegisterSuperAdmin({ user }) {
+export default function EditUser({ user }) {
     const { data, setData, post, errors, processing } = useForm({
-        name: "",
-        email: "",
-        role: 3,
-        password: "",
+        user_id: user.user_id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        password: user.user_id,
     })
-    function submit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        post('/registersuperadmin');
-    }
+        // Enviar los datos al controlador para actualizar el usuario
+        post(`/update-user/${user.user_id}`);
+    };
+
     console.log(errors);
     return (
         <Layout auth={user}>
-            <div className='bienvenida'>
-                <p className='bienvenidaname'>Bienvenido Super-Admin: {user.name}</p>
-                <p className='bienvenidaemail'>{user.email}</p>
-            </div>
-            <div className="w-1/2 mx-auto m-0 p-0">
-                <h1 className="block title">Registrar Super-Admin</h1>
-                <form onSubmit={submit} method="POST" className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100">
+            <div className="w-full mx-auto m-0 p-0">
+                <h1 className="block title">Modificar Usuario</h1>
+                <form onSubmit={handleSubmit} method="POST" className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             User ID
@@ -45,6 +43,12 @@ export default function RegisterSuperAdmin({ user }) {
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" id="email" type="text" placeholder="E-mail" value={data.email} onChange={(e) => setData('email', e.target.value)}></input>
                     </div>
                     <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Role
+                        </label>
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="role" id="role" type="text" placeholder="Role" value={data.role} onChange={(e) => setData('role', e.target.value)}></input>
+                    </div>
+                    <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" >
                             Password
                         </label>
@@ -59,10 +63,11 @@ export default function RegisterSuperAdmin({ user }) {
                     </div>
                     <div className="flex items-center content-center justify-center">
                         <button disabled={processing} className="btn-login text-white" type="submit">
-                            <FaRegAddressCard className='login-icons mx-2' />
-                            Registrar
+                            <FaRegAddressCard className='login-icons mx-3' />
+                            Actualizar
                         </button>
                     </div>
+
                 </form>
                 <p className="text-center text-gray-500 text-xs">
                     &copy;2024 Benemérita Universidad Autónoma de Puebla.
@@ -71,5 +76,3 @@ export default function RegisterSuperAdmin({ user }) {
         </Layout>
     )
 }
-//id contraseña
-//correo username
