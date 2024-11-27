@@ -16,7 +16,7 @@ export default function Login() {
     console.log(errors);
     return (
         <Layout>
-            <div className="w-full p-0 m-o">
+            <div className="w-full p-0 m-0">
                 <h1 className="block title">Login</h1>
                 <form onSubmit={submit} method="POST" className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 opacity-60 hover:opacity-100">
                     <div className="mb-4">

@@ -11,7 +11,9 @@ class HomeConstanciasController extends Controller
 {
     public function index()
     {
-        $constacias = Constancia::all();
+        $admin_id = Auth::user()->user_id;
+        $constacias = Constancia::where('admin_id', $admin_id)->get();
+        //$constacias = Constancia::all();
         return Inertia::render('HomeConstancias', [
             'constancias' => $constacias,
             'user' => Auth::user(),

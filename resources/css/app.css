@@ -33,11 +33,11 @@
     }
 
     header {
-        @apply bg-slate-800;
+        @apply bg-slate-800 justify-center;
     }
 
     nav {
-        @apply p-4 max-w-screen-lg mx-auto flex items-center justify-between;
+        @apply p-4 px-40 flex flex-row content-center items-center justify-between;
     }
 
     main {
@@ -186,5 +186,13 @@
 
     .td_constancia_contenido {
         @apply font-bold max-w-3xl;
+    }
+
+    .coordenadas {
+        @apply flex justify-between w-2/3 mx-auto;
+    }
+
+    .previewplantilla {
+        @apply max-w-2xl mx-auto;
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeSuperAdminController;
 use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\HomeUsersController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlantillaController;
 use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\RegisterConstanciaController;
 use App\Http\Controllers\RegisterConstanciasExcelController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RegisterSuperAdminController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\RegisterUsersExcelController;
+use Illuminate\Routing\Router;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -27,6 +29,8 @@ Route::middleware(['auth', 'isSuperAdmin'])->group(function () {
     Route::resource('/registersuperadmin', RegisterSuperAdminController::class);
     Route::get('/registeradmin', [RegisterAdminController::class, 'index'])->name('registeradmin');
     Route::resource('/registeradmin', RegisterAdminController::class);
+    Route::get('/registerplantilla', [PlantillaController::class, 'index'])->name('registerplantilla');
+    Route::post('/registerplantillapost', [PlantillaController::class, 'store'])->name('registerplantillapost');
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

@@ -37,8 +37,9 @@ class RegisterConstanciasExcelController extends Controller
 
         try {
             $file = $request->file('file');
+            $admin_id = Auth::user()->user_id;
             // Importar el archivo
-            Excel::import(new ConstanciasImport, $file);
+            Excel::import(new ConstanciasImport($admin_id), $file);
 
             return response()->json(['message' => 'Archivo importado exitosamente'], 200);
         } catch (\Throwable $e) {

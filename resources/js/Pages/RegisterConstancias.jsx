@@ -5,6 +5,7 @@ import { FaRegAddressCard } from "react-icons/fa";
 
 export default function RegisterConstancias({ user }) {
     const { data, setData, post, errors, processing } = useForm({
+        plantilla_id: "",
         constancia_id: "",
         user_id: "",
         dems_id: "",
@@ -40,6 +41,12 @@ export default function RegisterConstancias({ user }) {
                 <h1 className="title">Register Constancias</h1>
                 <form onSubmit={submit} method="POST" className="formconstancias">
                     <div className="cajaform">
+                        <div className="mb-4">
+                            <label className="labelform">
+                                Plantilla_id
+                            </label>
+                            <input className="inputform" name="plantilla_id" id="plantilla_id" type="text" placeholder="Plantilla de la Constancia" value={data.plantilla_id} onChange={(e) => setData('plantilla_id', e.target.value)}></input>
+                        </div>
                         <div className="mb-4">
                             <label className="labelform">
                                 Constancia_id
@@ -183,6 +190,7 @@ export default function RegisterConstancias({ user }) {
                     </div>
                     <div className="h-10 p-0 m-0 ">
                         {errors.constancia_id && <p className="error">{errors.constancia_id}</p>}
+                        {errors.plantilla_id && <p className="error">{errors.plantilla_id}</p>}
                         {errors.user_id && <p className="error">{errors.user_id}</p>}
                         {errors.dems_id && <p className="error">{errors.dems_id}</p>}
                         {errors.f_direccion && <p className="error">{errors.f_direccion}</p>}

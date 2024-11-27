@@ -11,7 +11,9 @@ class HomeUsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $admin_id = Auth::user()->user_id;
+        $users = User::where('admin_id', $admin_id)->get();
+        //$users = User::all();
         return Inertia::render('HomeUsers', [
             'users' => $users,
             'user' => Auth::user(),

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "@inertiajs/react";
 import { IoLogIn } from "react-icons/io5";
+import { FaRegIdCard } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 export default function Layout({ children, auth }) {
     console.log('Layout props:', { auth }); // Verifica los props
     return (
@@ -15,9 +17,24 @@ export default function Layout({ children, auth }) {
 
                         {auth && auth.name ? (
                             <>
-                                <p className='text-white'>Usuario: {auth.name}</p>
+                                {auth.role === 3 && (
+                                    <>
+                                        <div className='flex nav-link link' href="/homeregisterconstancias">
+                                            <FaRegIdCard className='logout-icons m-2 p-1' href='/homeregisterconstancias' />
+                                            <Link className="content-center" href="/homeregisterconstancias">Constancias</Link>
+                                        </div>
+                                        <div className='flex nav-link link' href="/homeregisterusers">
+                                            <FaUser className='logout-icons m-2 p-1' href='/homeregisterusers' />
+                                            <Link className="content-center" href="/homeregisterusers">Usuarios</Link>
+                                        </div>
+
+                                    </>
+                                )}
+
+
+
                                 <div className='flex nav-link link' href="/logout">
-                                    <IoLogIn className='logout-icons' href='/logout' />
+                                    <IoLogIn className='logout-icons m-2 p-1' href='/logout' />
                                     <Link className="content-center" href="/logout">Cerrar Sesión</Link>
                                 </div>
 

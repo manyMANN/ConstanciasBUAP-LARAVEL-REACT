@@ -43,6 +43,7 @@ class User extends Authenticatable
         'email',
         'role',
         'password',
+        'admin_id',
     ];
 
     /**

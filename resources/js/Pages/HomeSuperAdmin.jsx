@@ -18,6 +18,10 @@ export default function Homesuperadmin({ user }) {
                     <Link className="botone-link" href="/registeradmin">Registrar Administrador</Link>
                     <Link className="botone-link" href="/registersuperadmin">Registrar Super-Administrador</Link>
                 </div>
+                <div className='flex justify-center items-center'>
+                    <Link className="botone-link" href="/registerplantilla">Registrar Plantilla</Link>
+                </div>
+
             </div>
         </Layout>
     );

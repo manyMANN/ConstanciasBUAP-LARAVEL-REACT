@@ -21,6 +21,7 @@ class RegisterConstanciaController extends Controller
         //dd($request);
         sleep(1);
         $files = $request->validate([
+            'plantilla_id' => ['required'],
             'constancia_id' => ['required'],
             'user_id' => ['required'],
             'numero_descargas' => 'nullable|integer',
@@ -47,8 +48,8 @@ class RegisterConstanciaController extends Controller
             'concepto_esdeped' => ['required'],
         ]);
         //dd($files);
+        $files['admin_id'] = Auth::user()->user_id;
         $data = Constancia::create($files);
-        dd($data);
         return redirect('/registerconstancias');
     }
 
@@ -66,6 +67,7 @@ class RegisterConstanciaController extends Controller
         $constancia = Constancia::findOrFail($constancia_id);
 
         $validatedData = $request->validate([
+            'plantilla_id' => ['required'],
             'constancia_id' => ['required'],
             'user_id' => ['required'],
             'name' => ['required'],
@@ -91,6 +93,7 @@ class RegisterConstanciaController extends Controller
             'concepto_esdeped' => ['required'],
             'numero_descargas' => ['nullable', 'integer'],
         ]);
+        $constancia->plantilla_id = $validatedData['plantilla_id'];
         $constancia->constancia_id = $validatedData['constancia_id'];
         $constancia->user_id = $validatedData['user_id'];
         $constancia->name = $validatedData['name'];

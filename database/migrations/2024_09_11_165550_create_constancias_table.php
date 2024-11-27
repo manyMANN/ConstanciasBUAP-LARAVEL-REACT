@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration
 {
@@ -14,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('constancias', function (Blueprint $table) {
             $table->bigIncrements('constancia_id')->unique()->primary();
+            $table->string('plantilla_id');
             $table->string('user_id');
             $table->string('name'); //Nombre del Docente
             $table->string('email'); //Correo electronico
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('validacion'); //Validacion
             $table->string('factor_esdeped'); //Factor ESDEPED
             $table->string('concepto_esdeped'); //Concepto ESDEPED
-            $table->string('admin_id'); //ID del Adminitrador que relizon el Registro de la Constancia
+            $table->string('admin_id'); //ID del Adminitrador que reliza el Registro de la Constancia
             $table->integer('numero_descargas')->default(0); //Numero de descargas
             $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

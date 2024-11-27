@@ -36,8 +36,9 @@ class RegisterUsersExcelController extends Controller
 
         try {
             $file = $request->file('file');
+            $admin_id = Auth::user()->user_id;
             // Importar el archivo
-            Excel::import(new UsersImport, $file);
+            Excel::import(new UsersImport($admin_id), $file);
 
             // Redirigir con un mensaje de éxito
             //return redirect('/registerconstanciasexcel')->with('success', 'Archivo importado exitosamente');

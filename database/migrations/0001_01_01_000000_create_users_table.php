@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique(); //Correo Electronico del Usuario
             $table->integer('role'); //Rol del Usuario 3:Super-Admin, 2:Admin, 1:Usuario
             $table->string('password'); //Contraseña del Usuario
-            $table->string('admin_id'); //ID del Adminitrador que relizon el Registro del Usuario
+            $table->string('admin_id')->default('000000000'); //ID del Adminitrador que reliza el Registro del Usuario
             $table->rememberToken();
             $table->timestamps();
         });

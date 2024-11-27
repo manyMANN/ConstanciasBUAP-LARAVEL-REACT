@@ -8,6 +8,13 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class UsersImport implements ToModel, WithHeadingRow
 {
+    protected $admin_id;
+
+    // Constructor para aceptar la variable admin_id
+    public function __construct($admin_id)
+    {
+        $this->admin_id = $admin_id;
+    }
     /**
      * @param array $row
      *
@@ -21,6 +28,7 @@ class UsersImport implements ToModel, WithHeadingRow
             'email' => $row['email'] ?? '',
             'role' => $row['role'],
             'password' => $row['password'],
+            'admin_id' => $this->admin_id,
         ]);
     }
     public function rules(): array

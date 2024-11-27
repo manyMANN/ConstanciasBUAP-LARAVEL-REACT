@@ -6,7 +6,7 @@ import { BlobProvider } from '@react-pdf/renderer';
 import { FaDownload } from "react-icons/fa";
 
 
-export default function TableConstanciasDownload({ constancias }) {
+export default function TableConstanciasDownload({ constancias, plantilla }) {
     // Estado para la búsqueda
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -51,7 +51,7 @@ export default function TableConstanciasDownload({ constancias }) {
                                 <td className='td_constancia_contenido'>Por su valiosa participacón {constancia.contenido_1} {constancia.contenido_constancia}</td>
                                 <td>{constancia.fecha_elaboracion}</td>
                                 <td>
-                                    <BlobProvider document={<ConstanciaPDF constancia={constancia} />}>
+                                    <BlobProvider document={<ConstanciaPDF constancia={constancia} plantilla={plantilla} />}>
                                         {({ url, loading, error }) =>
                                             loading ? (
                                                 'Generando vista previa...'

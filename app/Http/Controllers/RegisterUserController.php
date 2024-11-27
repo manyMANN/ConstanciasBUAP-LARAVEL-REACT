@@ -27,6 +27,7 @@ class RegisterUserController extends Controller
             'role' => ['required'],
             'password' => ['required'],
         ]);
+        $files['admin_id'] = Auth::user()->user_id;
 
         $user = User::create($files);
 

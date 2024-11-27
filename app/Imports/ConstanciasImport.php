@@ -8,6 +8,13 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class ConstanciasImport implements ToModel, WithHeadingRow
 {
+    protected $admin_id;
+
+    // Constructor para aceptar la variable admin_id
+    public function __construct($admin_id)
+    {
+        $this->admin_id = $admin_id;
+    }
     /**
      * @param array $row
      *
@@ -18,6 +25,7 @@ class ConstanciasImport implements ToModel, WithHeadingRow
         return new Constancia([
             //=====================INSER POR NOMBRE DECOMLUNA=========================
             //'constancia_id',
+            'plantilla_id' => $row['plantilla_id'],
             'user_id' => $row['user_id'],
             'name' => $row['name'] ?? 'Anónimo',
             'email' => $row['email'] ?? '',
@@ -40,6 +48,7 @@ class ConstanciasImport implements ToModel, WithHeadingRow
             'validacion' => $row['validacion'] ?? '',
             'factor_esdeped' => $row['factor_esdeped'] ?? '',
             'concepto_esdeped' => $row['concepto_esdeped'] ?? '',
+            'admin_id' => $this->admin_id,
             //==============INSERT POR NUMERO DE COLUMNAS======================
             /*'user_id' => $row[0], // Primer columna en el archivo
             'name' => $row[1] ?? 'Anónimo', // Segunda columna

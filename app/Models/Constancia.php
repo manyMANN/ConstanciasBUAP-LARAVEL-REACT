@@ -17,6 +17,7 @@ class Constancia extends Model
      */
     protected $fillable = [
         //'constancia_id',
+        'plantilla_id',
         'user_id',
         'numero_descargas',
         'name',
@@ -40,6 +41,7 @@ class Constancia extends Model
         'validacion',
         'factor_esdeped',
         'concepto_esdeped',
+        'admin_id',
     ];
     // Definir la clave primaria si no es 'id'
     protected $primaryKey = 'constancia_id';
@@ -52,7 +54,4 @@ class Constancia extends Model
 
     // Deshabilitar timestamps si no se usan
     public $timestamps = true;
-
-    // Definir la relación con el modelo User
-
 }
